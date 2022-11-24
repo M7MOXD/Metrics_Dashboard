@@ -17,6 +17,7 @@ _TODO:_ Expose Grafana to the internet and then setup Prometheus as a data sourc
 _TODO:_ Create a dashboard in Grafana that shows Prometheus as a source. Take a screenshot and include it here.
 
 ![img_3](./answer-img/Screenshot%20from%202022-11-23%2023-38-31.png)
+![img_3.1](./answer-img/Screenshot%20from%202022-11-24%2016-50-52.png)
 
 ## Describe SLO/SLI
 
@@ -74,7 +75,7 @@ TROUBLE TICKET
 
 Name: Error on backend/app/app.py
 
-Date: November 24 2022, 00:08:32.785
+Date: November 24 2022, 17:12:25.241
 
 Subject: Fails to add the name and distance of the star
 
@@ -84,7 +85,8 @@ Severity: High
 
 Description: 500 Internal Server Error The application issues the 500 error upon the addition of the star to the database. Meanwhile, inspecting the span everything appears to be ok but there seems to be an issue caused by the mongodb://example-mongodb-svc.default.svc.cluster.local:27017/example-mongodb, which is not available on the local cluster. Hence, the MongoDB Driver and URL must be available on our local cluster.
 
-![img_7](./answer-img/Screenshot%20from%202022-11-24%2000-09-18.png)
+![img_7](./answer-img/Screenshot%20from%202022-11-24%2017-20-15.png)
+![img_8](./answer-img/Screenshot%20from%202022-11-24%2017-24-10.png)
 
 ## Creating SLIs and SLOs
 
@@ -93,6 +95,7 @@ _TODO:_ We want to create an SLO guaranteeing that our application has a 99.95% 
 - Uptime: The application/service should be up and running for atleast 99.9% of the time on monthly basis.
 - Latency: The average request response time should not exceed 15ms on monthly basis.
 - Error Rate: The 20X status codes should be recorded for not less than 99.9% of the total requests whereas the 50X and 40X status codes should be recorded for less than 0.1% on all of the http requests made in month.
+- Saturation: he overall capacity of a service (such as the percentage of memory or CPU used). CPU should be less than 96% within a month.
 
 ## Building KPIs for our plan
 
@@ -114,12 +117,22 @@ C. Latency
 - Jaegar Span's Duration: This captures the duration of the tracing of the service's spans
 - Latency: This captures the total http's response time
 
+D. Saturation
+
+- Resource Capcity: CPU, RAM usage per pod. . Needed to measure saturation
+
+E. Network Usage
+
+- Network capcity: successful request per second / request per second. To measure any network bottlenect
+
 ## Final Dashboard
 
 _TODO_: Create a Dashboard containing graphs that capture all the metrics of your KPIs and adequately representing your SLIs and SLOs. Include a screenshot of the dashboard here, and write a text description of what graphs are represented in the dashboard.
 
-![img_8](./answer-img/Screenshot%20from%202022-11-23%2023-38-31.png)
-![img_9](./answer-img/Screenshot%20from%202022-11-23%2023-59-25.png)
+![img_11](./answer-img/Screenshot%20from%202022-11-23%2023-38-31.png)
+![img_12](./answer-img/Screenshot%20from%202022-11-23%2023-59-25.png)
+![img_13](./answer-img/Screenshot%20from%202022-11-24%2017-32-16.png)
+![img_14](./answer-img/Screenshot%20from%202022-11-24%2017-56-18.png)
 
 - Uptime: The total time that the services are up and running
 - Errors: The http 40X and 50X errors encountered by the services
